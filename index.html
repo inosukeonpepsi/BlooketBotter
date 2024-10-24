@@ -9,36 +9,24 @@
 <body>
     <div class="container">
         <h1>Blooket Bot Sender</h1>
-        
-        <div class="input-group">
-            <label for="game-code">Game Code</label>
-            <input type="text" id="game-code" placeholder="Enter Game Code" required>
-        </div>
-
         <div class="input-group">
             <label for="csrf-token">CSRF Token</label>
-            <input type="text" id="csrf-token" placeholder="Enter CSRF Token" required>
+            <input type="text" id="csrf-token" placeholder="Enter CSRF Token">
         </div>
-
+        <div class="input-group">
+            <label for="game-code">Game Code</label>
+            <input type="text" id="game-code" placeholder="Enter Game Code">
+        </div>
         <div class="input-group">
             <label for="bot-name">Bot Name</label>
-            <input type="text" id="bot-name" placeholder="Enter Bot Name" required>
+            <input type="text" id="bot-name" placeholder="Enter Bot Name">
         </div>
-
         <div class="input-group">
             <label for="bot-amount">Bot Amount</label>
-            <input type="number" id="bot-amount" placeholder="Enter Number of Bots" min="1" required>
+            <input type="number" id="bot-amount" placeholder="Enter Bot Amount" min="1">
         </div>
-
-        <div class="input-group">
-            <label for="lag-switch">Lag Switch</label>
-            <input type="checkbox" id="lag-switch">
-            <span>Enable Lag Switch</span>
-        </div>
-
         <button id="send-bots">Send Bots</button>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
