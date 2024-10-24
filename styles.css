@@ -38,10 +38,6 @@ input[type="number"] {
     box-sizing: border-box;
 }
 
-input[type="checkbox"] {
-    margin-right: 10px;
-}
-
 button {
     width: 100%;
     padding: 10px;
