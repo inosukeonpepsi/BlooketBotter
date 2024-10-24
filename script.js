@@ -1,43 +1,35 @@
-document.getElementById('send-bots').addEventListener('click', sendBots);
-
-function sendBots() {
-    const gameCode = document.getElementById('game-code').value;
+document.getElementById('send-bots').addEventListener('click', function() {
     const csrfToken = document.getElementById('csrf-token').value;
+    const gameCode = document.getElementById('game-code').value;
     const botName = document.getElementById('bot-name').value;
-    const botAmount = parseInt(document.getElementById('bot-amount').value, 10);
-    const lagSwitch = document.getElementById('lag-switch').checked;
+    const botAmount = parseInt(document.getElementById('bot-amount').value);
 
-    if (!gameCode || !csrfToken || !botName || isNaN(botAmount) || botAmount <= 0) {
+    if (csrfToken && gameCode && botName && botAmount > 0) {
+        for (let i = 0; i < botAmount; i++) {
+            sendBot(csrfToken, gameCode, botName);
+        }
+    } else {
         alert('Please fill in all fields correctly.');
-        return;
     }
+});
 
-    // Prepare the request body
-    const requestBody = {
-        gameCode: gameCode,
-        botName: botName,
-        botAmount: botAmount,
-        lagSwitch: lagSwitch,
-    };
-
-    // Make the fetch call
-    fetch('https://goldquest.blooket.com/apipb/playservice.v1.PlayService/Me', {
+function sendBot(csrfToken, gameCode, botName) {
+    fetch('https://goldquest.blooket.com/apipb/playservice.v1.PlayService/Join', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'x-csrf-token': csrfToken, // Use the CSRF token from the input
+            'x-csrf-token': csrfToken
         },
-        body: JSON.stringify(requestBody),
+        body: JSON.stringify({
+            gameCode: gameCode,
+            name: botName
+        })
     })
-    .then(response => {
-        if (response.ok) {
-            alert('Bots sent successfully!');
-        } else {
-            alert('Error sending bots. Please try again.');
-        }
+    .then(response => response.json())
+    .then(data => {
+        console.log('Bot sent:', data);
     })
     .catch(error => {
-        console.error('Error:', error);
-        alert('An error occurred. Please check the console for details.');
+        console.error('Error sending bot:', error);
     });
 }
