@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blooket Tools</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .grid {
+            display: grid;
+            gap: 16px;
+        }
+
+        .space-y-2 {
+            margin-bottom: 16px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .grid-cols-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .lag-switch-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .lag-switch-container label {
+            margin-left: 10px;
+            font-weight: bold;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 24px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: 0.4s;
+            border-radius: 24px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #007BFF;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(20px);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="grid grid-cols-1 gap-4">
+            <div class="space-y-2">
+                <h2>Blooket Answers</h2>
+                <label>Blooket Code/Link</label>
+                <input type="text" placeholder="2607406 or https://play.blooket.com/play?hwId=65700de86a9c6a1c5b2ddf01" id="blooket-code-input">
+                <button id="find-answers-btn">Find Answers</button>
+            </div>
+            <div class="space-y-2">
+                <h2>Blooket Bots</h2>
+                <label>Game Code</label>
+                <input type="text" placeholder="2607406" id="game-code-input">
+                <div class="grid-cols-2">
+                    <div>
+                        <label>Bot Name</label>
+                        <input type="text" placeholder="John Wick" id="bot-name-input">
+                    </div>
+                    <div>
+                        <label>Bot Amount</label>
+                        <input type="number" placeholder="10" id="bot-amount-input">
+                    </div>
+                </div>
+                <div class="lag-switch-container">
+                    <label>Lag Switch</label>
+                    <label class="switch">
+                        <input type="checkbox" id="lag-switch">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <button id="send-bots-btn">Send Bots</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Find Answers functionality
+        document.getElementById('find-answers-btn').addEventListener('click', function() {
+            const blooketCodeOrLink = document.getElementById('blooket-code-input').value;
+            if (blooketCodeOrLink) {
+                console.log("Finding answers for:", blooketCodeOrLink);
+                // Add your logic to fetch answers here, possibly an API call or interaction with Blooket
+            } else {
+                alert('Please enter a valid Blooket Code or Link');
+            }
+        });
+
+        // Send Bots functionality
+        document.getElementById('send-bots-btn').addEventListener('click', function() {
+            const gameCode = document.getElementById('game-code-input').value;
+            const botName = document.getElementById('bot-name-input').value;
+            const botAmount = document.getElementById('bot-amount-input').value;
+            const lagSwitchEnabled = document.getElementById('lag-switch').checked;
+
+            if (gameCode && botName && botAmount) {
+                console.log(`Sending ${botAmount} bots named ${botName} to game code ${gameCode}. Lag Switch: ${lagSwitchEnabled ? 'On' : 'Off'}`);
+                // Add logic here to send the bots to the game, like an API request
+            } else {
+                alert('Please fill out all fields correctly.');
+            }
+        });
+    </script>
+
+</body>
+</html>
