@@ -3,27 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blooket Bot Sender</title>
     <link rel="stylesheet" href="styles.css">
-    <title>Blooket Bot Interface</title>
 </head>
 <body>
     <div class="container">
-        <h2>Blooket Bots</h2>
-        
-        <label for="csrf-token">CSRF Token:</label>
-        <input type="text" id="csrf-token" placeholder="Enter CSRF Token" required>
+        <h1>Blooket Bot Sender</h1>
 
-        
-        <label for="game-code">Game Code</label>
-        <input type="text" id="game-code" placeholder="2607406">
+        <div class="form-group">
+            <label for="game-code">Game Code:</label>
+            <input type="text" id="game-code" placeholder="Enter Game Code" required>
+        </div>
 
-        <label for="bot-name">Bot Name</label>
-        <input type="text" id="bot-name" placeholder="John Wick">
+        <div class="form-group">
+            <label for="bot-name">Bot Name:</label>
+            <input type="text" id="bot-name" placeholder="Enter Bot Name" required>
+        </div>
 
-        <label for="bot-amount">Bot Amount</label>
-        <input type="number" id="bot-amount" placeholder="10">
+        <div class="form-group">
+            <label for="bot-amount">Bot Amount:</label>
+            <input type="number" id="bot-amount" placeholder="Enter Number of Bots" required>
+        </div>
 
-        <button id="send-bots" class="send-button">Send Bots</button>
+        <div class="form-group">
+            <label for="csrf-token">CSRF Token:</label>
+            <input type="text" id="csrf-token" placeholder="Enter CSRF Token" required>
+        </div>
+
+        <button id="send-bots">Send Bots</button>
     </div>
 
     <script src="script.js"></script>
