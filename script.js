@@ -1,38 +1,13 @@
-document.getElementById('lookup-btn').addEventListener('click', async () => {
-    const csrfToken = document.getElementById('csrf-token').value;
-    const idToken = document.getElementById('id-token').value;
-
-    if (!csrfToken || !idToken) {
-        alert('Please enter both CSRF Token and ID Token');
-        return;
-    }
-
-    await lookupAccount(idToken);
-});
-
-async function lookupAccount(idToken) {
-    const url = `https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyCA-cTOnX19f6LFnDVVsHXya3k6ByP_MnU`;
-
-    try {
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ idToken }),
-        });
-
-        if (!response.ok) {
-            throw new Error('Failed to lookup account');
-        }
-
-        const data = await response.json();
-        console.log('Account lookup successful:', data);
-
-        // Display output
-        document.getElementById('output').innerText = JSON.stringify(data, null, 2);
-    } catch (error) {
-        console.error('Error looking up account:', error);
-        document.getElementById('output').innerText = 'Error looking up account: ' + error.message;
+// Function to open a new tab with the specified game code
+function openGameTab() {
+    const gameCode = document.getElementById('game-code-input').value; // Get the game code from the input field
+    if (gameCode) {
+        const url = `https://play.blooket.com/play/${gameCode}`; // Create the URL with the game code
+        window.open(url, '_blank'); // Open the URL in a new tab
+    } else {
+        alert('Please enter a game code.'); // Alert if no game code is entered
     }
 }
+
+// Event listener for the button to open the game tab
+document.getElementById('open-game-tab').addEventListener('click', openGameTab);
