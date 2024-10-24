@@ -2,17 +2,11 @@ document.getElementById('send-bots').addEventListener('click', async () => {
     const gameCode = document.getElementById('game-code').value;
     const botName = document.getElementById('bot-name').value;
     const botAmount = parseInt(document.getElementById('bot-amount').value);
+    const csrfToken = document.getElementById('csrf-token').value; // Get CSRF token from input
 
     // Check if inputs are valid
-    if (!gameCode || !botName || isNaN(botAmount) || botAmount <= 0) {
+    if (!gameCode || !botName || isNaN(botAmount) || botAmount <= 0 || !csrfToken) {
         alert('Please fill in all fields correctly.');
-        return;
-    }
-
-    const csrfToken = prompt("Please enter your CSRF token:");
-
-    if (!csrfToken) {
-        alert('CSRF token is required.');
         return;
     }
 
@@ -21,7 +15,7 @@ document.getElementById('send-bots').addEventListener('click', async () => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/proto',
-                'x-csrf-token': csrfToken,
+                'x-csrf-token': csrfToken, // Use the CSRF token here
                 'Accept': '*/*',
                 'User-Agent': 'Mozilla/5.0',
             },
