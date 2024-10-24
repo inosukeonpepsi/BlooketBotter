@@ -1,33 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="styles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blooket Bot Sender</title>
     <link rel="stylesheet" href="styles.css">
+    <title>Blooket Bot Interface</title>
 </head>
 <body>
     <div class="container">
-        <h1>Blooket Bot Sender</h1>
-        <div class="input-group">
-            <label for="csrf-token">CSRF Token</label>
-            <input type="text" id="csrf-token" placeholder="Enter CSRF Token">
-        </div>
-        <div class="input-group">
-            <label for="game-code">Game Code</label>
-            <input type="text" id="game-code" placeholder="Enter Game Code">
-        </div>
-        <div class="input-group">
-            <label for="bot-name">Bot Name</label>
-            <input type="text" id="bot-name" placeholder="Enter Bot Name">
-        </div>
-        <div class="input-group">
-            <label for="bot-amount">Bot Amount</label>
-            <input type="number" id="bot-amount" placeholder="Enter Bot Amount" min="1">
-        </div>
-        <button id="send-bots">Send Bots</button>
+        <h2>Blooket Bots</h2>
+        
+        <label for="game-code">Game Code</label>
+        <input type="text" id="game-code" placeholder="2607406">
+
+        <label for="bot-name">Bot Name</label>
+        <input type="text" id="bot-name" placeholder="John Wick">
+
+        <label for="bot-amount">Bot Amount</label>
+        <input type="number" id="bot-amount" placeholder="10">
+
+        <button id="send-bots" class="send-button">Send Bots</button>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
